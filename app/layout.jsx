@@ -17,7 +17,7 @@ export default function RootLayout({ children }) {
                   <Navbar />
                   <div className={styles.pageContainer}>
                      <div>{children}</div>
-                     <div>
+                     <div className={styles.cart}>
                         <Cart />
                      </div>
                   </div>
