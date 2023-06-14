@@ -1,0 +1,64 @@
+// input base
+.inputWrapper {
+      position: relative;
+      & .input {
+         padding: 12px 16px;
+         border-radius: 4px;
+         border: 2px solid transparent;
+         box-sizing: border-box;
+         &:focus-visible {
+            outline: none;
+            border-color: $border;
+         }
+         /*&.icon {
+            padding-left: 46px !important;
+         }*/
+      }
+      & .leftIcon {
+         position: absolute;
+         top: 50%;
+         transform: translateY(-50%);
+      }
+   }
+
+// radio
+.radioGroup, {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   gap: 12px;
+   & .radio {
+      & .input {
+         border-radius: 100%;
+         padding: 6px;
+         &:checked {
+            &:after {
+               content: "";
+               width: 8px;
+               height: 8px;
+               border-radius: 100%;
+               background: $primary;
+               position: absolute;
+               top: 50%;
+               left: 50%;
+               transform: translate(-50%, -50%);
+            }
+         }
+      }
+   }
+   & .checkbox, .radio {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      & .input {
+         -webkit-appearance: none;
+         border: 2px solid $primary;
+         display: inline-block;
+         position: relative;
+         cursor: pointer;
+      }
+      & .label {
+         cursor: pointer;
+      }
+   }
+}

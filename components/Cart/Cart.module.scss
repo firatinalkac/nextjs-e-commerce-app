@@ -1,0 +1,49 @@
+.cartContainer {
+   display: flex;
+   gap: 12px;
+   flex-direction: column;
+   & .cartProductContainer, .checkout {
+      background: $white;
+      box-shadow: $box-shadow;
+      padding: 16px;
+      font-size: 12px;
+      width: 100%;
+      max-height: 130px;
+      overflow: auto;
+   }
+   & .cartProductContainer {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      & .cartProduct {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         & .productInfo {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            & .productPrice {
+               color: $primary;
+               font-weight: 500;
+            }
+         }
+      }
+   }
+   & .checkout {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      font-size: 14px;
+      & .totalPrice {
+         display: inline-block;
+         font-weight: 600;
+         color: $primary;
+         margin-bottom: 14px;
+      }
+   }
+   @include media-query('tablet', max) {
+      flex-direction: row;
+      justify-content: space-between;
+   }
+}

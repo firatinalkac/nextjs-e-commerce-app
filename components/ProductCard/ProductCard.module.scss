@@ -1,0 +1,22 @@
+.card {
+   background: $white;
+   padding: 10px;
+   border-radius: 4px;
+   width: 180px;
+   display: flex;
+   flex-direction: column;
+   gap: 15px;
+   justify-content: space-between;
+   &__image {
+      border-radius: 4px;
+      overflow: hidden;
+      width: 100%;
+   }
+   &__price {
+      color: $primary;
+      font-weight: 500;
+   }
+   &__title {
+      font-weight: 500;
+   }
+}

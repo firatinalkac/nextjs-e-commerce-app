@@ -1,0 +1,91 @@
+.navbar {
+   display: grid;
+   grid-template-columns: 1fr 4fr 1fr;
+   grid-column-gap: 16px;
+   background-color: $primary;
+   align-items: center;
+   position: relative;
+   @include clampAll('padding', 24px);
+   & .brand {
+      font-weight: 800;
+      font-size: 24px;
+      color: $white;
+      cursor: pointer;
+      text-decoration: none;
+   }
+   &__right {
+      display: flex;
+      justify-content:  flex-end;
+      gap: 16px;
+      & .basket, .user {
+         display: flex;
+         align-items: center;
+         gap: 8px;
+         color: $white;
+      }
+      & .rightMobile {
+         display: none;
+         & .mobileToggle {
+            display: flex;
+            justify-content: flex-end;
+            cursor: pointer;
+         }
+         & .mobileMenu {
+            position: absolute;
+            width: 100%;
+            background: $natural-100;
+            top: 76px;
+            left: 0;
+            right: 0;
+            height: 0;
+            box-shadow:  $box-shadow;
+            transition: all .3s ease-out;
+            visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            z-index: 10;
+            &.open {
+               height: calc(100vh - 76px);
+               visibility: visible;
+               padding: 16px;
+            }
+            & .mobileSearch {
+               position: relative;
+               width: 100%;
+            }
+            & .mobileInfo {
+               display: flex;
+               align-items: center;
+               justify-content: space-between;
+               padding: 0 16px;
+               & .mobileBasket, .mobileUser {
+                  display: flex;
+                  align-items: center;
+                  gap: 12px;
+                  color: $dark;
+               }
+            }
+         }
+      }
+   }
+}
+
+// responsive
+@include media-query('tablet', max) {
+   .navbar {
+      display: flex;
+      justify-content: space-between;
+      & .searchBox {
+         display: none;
+      }
+      &__right {
+         & .user, .basket {
+            display: none;
+         }
+         & .rightMobile {
+            display: block;
+         }
+      }
+   }
+}

@@ -1,0 +1,53 @@
+@mixin transition($type, $second: "") {
+   @if $second != "" {
+      transition: $type $transition, $second $transition;
+   } @else {
+      transition: $type $transition;
+   }
+}
+
+@mixin flex-center {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+@mixin clampAll($type, $top) {
+   #{$type}: $top clamp(3vw, 100%, (100vw - 1600px) / 4);
+}
+
+$breakpoints: (
+   "phone": 400px,
+   "phone-wide": 480px,
+   "phablet": 560px,
+   "tablet-small": 640px,
+   "tablet": 768px,
+   "tablet-wide": 1024px,
+   "desktop": 1248px,
+   "desktop-wide": 1440px,
+   "desktop-wider": 1920px,
+   "desktop-large": 2560px,
+);
+@mixin media-query($size, $type: min) {
+   @if map_has_key($breakpoints, $size) {
+      $size: map_get($breakpoints, $size);
+      @if $type == max {
+         $size: $size - 1px;
+      }
+      @media only screen and (#{$type}-width: $size) {
+         @content;
+      }
+   }
+}
+
+@mixin hideScrollBar() {
+   -ms-overflow-style: none;
+   /* for Internet Explorer, Edge */
+   scrollbar-width: none;
+   /* for Firefox */
+
+   &::-webkit-scrollbar {
+      display: none;
+      /* for Chrome, Safari, and Opera */
+   }
+}

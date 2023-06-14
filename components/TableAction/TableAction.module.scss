@@ -1,0 +1,22 @@
+.filterBox {
+   width: 100%;
+   & .title {
+      display: block;
+      color: $natural-400;
+      margin-bottom: 8px;
+      font-size: 12px;
+   }
+   & .items {
+      background: $white;
+      box-shadow: $box-shadow;
+      padding: 12px;
+      font-size: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      & .values {
+         max-height: 90px;
+         overflow: auto;
+      }
+   }
+}

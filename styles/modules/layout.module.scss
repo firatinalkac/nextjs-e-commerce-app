@@ -1,0 +1,15 @@
+.pageContainer {
+   display: grid;
+   grid-template-columns: 5fr 1fr;
+   gap: 16px;
+   @include clampAll('padding', 24px);
+   @include media-query('tablet', max) {
+      grid-template-columns: 1fr;
+      & .cart {
+         display: none;
+      }
+   }
+   &.emptyCart {
+      grid-template-columns: 1fr;
+   }
+}

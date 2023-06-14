@@ -1,0 +1,33 @@
+.container {
+   display: grid;
+   grid-template-columns: 1fr 4fr;
+   grid-column-gap: 16px;
+   grid-row-gap: 16px;
+   padding-bottom: 64px;
+   & .filterContainer {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+   }
+   & .mobileFilterContainer {
+      display: none;
+   }
+   & .productsContainer {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+   }
+}
+
+// responsive
+@include media-query('tablet', max) {
+   .container {
+      grid-template-columns: 1fr;
+      & .mobileFilterContainer {
+         display: block;
+      }
+      & .products {
+         justify-content: center;
+      }
+   }
+}
