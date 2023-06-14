@@ -23,12 +23,6 @@ const ProductDetail = ({ params }) => {
       return cartItems?.find((item) => item.id === params.id)?.quantity || 0;
    }, [cartItems]);
 
-   const addToCart = (item) => {
-      if (quantity === 0) {
-         dispatch(setProductToCart(item));
-      }
-   };
-
    return (
       <div className={styles.detailContainer}>
          <div className={styles.imageContainer}>
@@ -38,10 +32,10 @@ const ProductDetail = ({ params }) => {
             <h3 className={styles.title}>{productData?.name}</h3>
             <p className={styles.price}>{productData?.price} ₺</p>
             <Button
-               text={!!quantity ? "In the cart" : "Add to Cart"}
+               text={!!quantity ? `${quantity} items in cart` : "Add to Cart"}
                type={!!quantity ? "success" : "primary"}
                width="100%"
-               onClick={() => addToCart(productData)}
+               onClick={() => dispatch(setProductToCart(productData))}
                key={productData?.quantity}
             />
             <p className={styles.description}>

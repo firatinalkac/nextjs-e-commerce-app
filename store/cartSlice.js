@@ -17,14 +17,14 @@ const cartSlice = createSlice({
    initialState,
    reducers: {
       setProductToCart: (state, action) => {
-         const newItem = action.payload;
-         const existingItem = state.cartItems.find(
-            (item) => item.id === newItem.id
-         );
-         if (!existingItem) {
-            const updatedCartItems = [...state.cartItems, newItem];
-            newItem.quantity = 1;
-            state.cartItems = updatedCartItems;
+         let cartIndex = state.cartItems.findIndex(
+            (item) => item.id === action.payload.id,
+         )
+         if (cartIndex >= 0) {
+            state.cartItems[cartIndex].quantity += 1
+         } else {
+            let tempProduct = { ...action.payload, quantity: 1 }
+            state.cartItems.push(tempProduct)
          }
          calcTotalPrice(state);
       },

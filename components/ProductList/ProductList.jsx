@@ -9,8 +9,10 @@ import { setProductToCart } from "@/store/cartSlice";
 import productServices from "@/services/productServices";
 
 import ProductCard from "@/components/ProductCard/ProductCard";
+import {useRouter} from "next/navigation";
 
 const ProductList = async ({ initialData }) => {
+   const router = useRouter();
    const dispatch = useDispatch();
 
    const filters = useSelector((state) => state.products.filters);
@@ -25,14 +27,6 @@ const ProductList = async ({ initialData }) => {
       };
    }, [filters]);
 
-   const addToCart = (item) => {
-      if (item.quantity === 0) {
-         return;
-      }
-
-      dispatch(setProductToCart(item));
-   };
-
    return (
       <div className={styles.products}>
          {productList?.map((product, index) => (
@@ -43,7 +37,8 @@ const ProductList = async ({ initialData }) => {
                name={product.name}
                id={product.id}
                productQuantity={product.quantity}
-               addToCart={() => addToCart(product)}
+               addToCart={() => dispatch(setProductToCart(product))}
+               clickCard={() => router.push(`/product/${product.id}`)}
             />
          ))}
       </div>
