@@ -14,13 +14,20 @@ const SearchList = ({ ...props }) => {
 
    const handleSearch = async (value) => {
       setSearchValue(value);
-      if (value.length > 1) {
+
+      if(value.length === 0) {
+         return setSearchData([]);
+      }
+
+      try {
          setLoading(true);
          const response = await productServices.searchProduct(value);
          setSearchData(response);
-         setLoading(false);
-      } else {
+      } catch (err) {
+         console.log(err)
          setSearchData([]);
+      } finally {
+         setLoading(false);
       }
    };
 

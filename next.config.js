@@ -7,7 +7,7 @@ const nextConfig = {
         additionalData: `@import "@s/general/_global.scss";`,
     },
     images: {
-        domains: ["placeimg.com"],
+        domains: ["loremflickr.com"],
     },
 };
 

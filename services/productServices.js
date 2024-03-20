@@ -37,7 +37,7 @@ export default {
 
    async searchProduct(searchValue) {
       const response = await instance.get("/products", {
-         params: { searchValue },
+         params: { search: searchValue },
       });
       return response.data;
    },
