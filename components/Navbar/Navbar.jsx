@@ -20,7 +20,7 @@ const Navbar = () => {
       <>
          <nav className={styles.navbar}>
             <Link href="/" className={styles.brand}>
-               Eteration
+               E-Commerce
             </Link>
             <div className={styles.searchBox}>
                <SearchList />
