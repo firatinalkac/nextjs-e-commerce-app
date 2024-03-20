@@ -20,7 +20,15 @@ const ProductList = async ({ initialData }) => {
    const [productList, setProductList] = useState(initialData);
 
    useEffect(() => {
-      productServices.getProducts(filters).then(setProductList);
+      async function fetchData() {
+         const payload = {
+            ...filters
+         };
+         delete payload.sort;
+         await productServices.getProducts(payload).then(setProductList);
+      }
+
+      fetchData();
 
       return () => {
          setProductList([]);

@@ -25,7 +25,7 @@ const ProductPagination = async ({}) => {
       return () => {
          setTotal(0);
       };
-   }, [filters]);
+   }, [filters.model, filters.brand]);
 
    return (
       <div className={styles.paginationContainer}>
